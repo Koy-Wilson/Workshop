@@ -23,9 +23,7 @@ public:
 
 String::String()
 {
-    char* temp = new char[1];
-    temp[0] = '\0';
-    strArray = temp;
+    strArray = new char[0];
     size = 0;
 }
 
@@ -138,6 +136,7 @@ String& String::operator=(String &inpStr)
 
 String& String::operator=(char* inpStr)
 {
+    delete [] strArray;
     char* temp = new char[strLen(inpStr)];
 
     for(int index = 0; index < strLen(inpStr); ++index)
@@ -145,40 +144,60 @@ String& String::operator=(char* inpStr)
         temp[index] = inpStr[index];
     }
 
+    size = strLen(temp);
+    strArray = new char[size];
     strArray = temp;
     return *this;
 }
 
 bool String::operator<(String &inpStr)
 {
-    int minSize = min(size, inpStr.size);
-
-    for(int index = 0; index < minSize; ++index)
+    if(this == &inpStr)
     {
-        cout << "Current element of: " << *this << " " << strArray[index] << endl;
-        cout << "Current element of: " << inpStr << " " << inpStr.strArray[index] << endl;
-
-        if(strArray[index] >= inpStr.strArray[index] && strArray[index] != '\0' && inpStr.strArray[index] != '\0')
+        return false;
+    }
+    else
+    {
+        for(int index = 0; index < min(size, inpStr.size); ++index)
         {
-            return false;
+            if(strArray[index] > inpStr.strArray[index])
+            {
+                return false;
+            }
         }
+
+        return true;
     }
 
-    cout << *this << " is less than " << inpStr;
-    return true;
 }
 
-int main() {
+bool String::operator>(String &inpStr)
+{
+    if(this == &inpStr)
+    {
+        return false;
+    }
+    else
+    {
+        for(int index = 0; index < min(size, inpStr.size); ++index)
+        {
+            if(strArray[index] < inpStr.strArray[index])
+            {
+                return false;
+            }
+        }
 
-    char* test1 = "AAAAAAAAAAA";
-    char* test2 = "HHHHHHHHHHH";
+        return true;
+    }
+}
 
-    String first(test1);
-    String second(test2);
+int main()
+{
+    String first("A");
+    String second("B");
 
-    bool compare = first < second;
+    bool compare = second > first;
     cout << compare;
 
-
-
+    return 0;
 }
