@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/DataStructures/Workshop/cmake-build-debug",
-		"source" : "C:/DataStructures/Workshop"
+		"build" : "D:/Data_Structures/Workshop/cmake-build-debug",
+		"source" : "D:/Data_Structures/Workshop"
 	},
 	"version" : 
 	{

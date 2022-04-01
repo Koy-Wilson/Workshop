@@ -1,4 +1,4 @@
-# Install script for directory: C:/DataStructures/Workshop
+# Install script for directory: D:/Data_Structures/Workshop
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/DataStructures/CLion/CLion 2021.3.2/bin/mingw/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "D:/Data_Structures/CLion 2021.3.2/bin/mingw/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/DataStructures/Workshop/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Data_Structures/Workshop/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

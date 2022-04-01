@@ -31,7 +31,16 @@ String::String()
 
 String::String(String &inpStr)
 {
-    //TODO: FINISH WRITING THE CONSTRUCTOR FOR AN INPUT STRING
+    size = strLen(inpStr.strArray);
+
+    char* temp = new char[size];
+
+    for(int index = 0; index < size; ++index)
+    {
+        temp[index] = inpStr.strArray[index];
+    }
+
+    strArray = temp;
 }
 
 String::String(char *inpStr)
@@ -91,12 +100,85 @@ void String::strCpy(char *first, char *second, int n)
 
 }
 
+bool String::operator==(String &inpStr)
+{
+    if(strLen(inpStr.strArray) != strLen(this->strArray))
+    {
+        return false;
+    }
+
+    for(int index = 0; index < size; ++index)
+    {
+        if(inpStr.strArray[index] != strArray[index])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+String& String::operator=(String &inpStr)
+{
+    if(this == &inpStr)
+        return *this;
+
+    delete [] strArray;
+    size = strLen(inpStr.strArray);
+
+    char* temp;
+    for(int index = 0; index < size; ++index)
+    {
+        temp[index] = inpStr.strArray[index];
+    }
+
+    strArray = temp;
+    return *this;
+}
+
+String& String::operator=(char* inpStr)
+{
+    char* temp = new char[strLen(inpStr)];
+
+    for(int index = 0; index < strLen(inpStr); ++index)
+    {
+        temp[index] = inpStr[index];
+    }
+
+    strArray = temp;
+    return *this;
+}
+
+bool String::operator<(String &inpStr)
+{
+    int minSize = min(size, inpStr.size);
+
+    for(int index = 0; index < minSize; ++index)
+    {
+        cout << "Current element of: " << *this << " " << strArray[index] << endl;
+        cout << "Current element of: " << inpStr << " " << inpStr.strArray[index] << endl;
+
+        if(strArray[index] >= inpStr.strArray[index] && strArray[index] != '\0' && inpStr.strArray[index] != '\0')
+        {
+            return false;
+        }
+    }
+
+    cout << *this << " is less than " << inpStr;
+    return true;
+}
+
 int main() {
 
-    char* test = "This is a test, please don't fail.";
+    char* test1 = "AAAAAAAAAAA";
+    char* test2 = "HHHHHHHHHHH";
 
-    String first(test);
-    String second(first);
+    String first(test1);
+    String second(test2);
 
-    cout << second;
+    bool compare = first < second;
+    cout << compare;
+
+
+
 }
