@@ -83,10 +83,7 @@ ostream& operator << (ostream& os, String& str)
 
 void String::strCpy(char *first, char *second, int n)
 {
-    if(first != nullptr)
-    {
-        delete [] first;
-    }
+    delete [] first;
 
     char temp[n];
     for(int index = 0; index < n; ++index)
@@ -193,11 +190,6 @@ bool String::operator>(String &inpStr)
 
 int main()
 {
-    String first("A");
-    String second("B");
-
-    bool compare = second > first;
-    cout << compare;
 
     return 0;
 }
